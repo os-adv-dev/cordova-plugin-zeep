@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin id="cordova-plugin-zeep" version="0.0.4" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <name>Zeep</name>
+	<name>Zeep</name>
     <description>Cordova Zeep Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,zeep,zip,unzip,FiNe,ecosystem:cordova,cordova-android,cordova-ios,cordova-windows</keywords>
     <repo>https://github.com/FortuneN/cordova-plugin-zeep.git</repo>
     <issue>https://github.com/FortuneN/cordova-plugin-zeep/issues</issue>
 
-    <dependency id="cordova-plugin-file" version=">=2.0.0" />
+    <!--<dependency id="cordova-plugin-file" version="6.0.2-OS7" />-->
 
     <js-module name="Zeep" src="www/Zeep.js">
         <clobbers target="window.Zeep" />
@@ -32,16 +31,30 @@
                 <param name="android-package" value="FiNe.Zeep" />
             </feature>
         </config-file>
-        <source-file src="src/android/FiNe/Zeep.java" target-dir="src/FiNe" />
+       <!-- <source-file src="src/android/FiNe/ZeepOld.java" target-dir="src/FiNe" />-->
+
+        <!-- kotlin example -->
+       <source-file src="src/android/FiNe/Zeep.kt" target-dir="app/src/main/kotlin/FiNe/" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+			<preference name="GradlePluginKotlinVersion" value="1.6.0" />
+			<preference name="GradlePluginKotlinEnabled" value="true" />
+            <preference name="GradlePluginKotlinCodeStyle" value="official" />
+            <preference name="AndroidXEnabled" value="true"/>
+        </config-file>
+
     </platform>
 
     <platform name="ios">
+        
+        <hook type="after_plugin_add" src="src/ios/hooks/add_swift_support.js" />
+        
         <config-file target="config.xml" parent="/*">
             <feature name="Zeep">
                 <param name="ios-package" value="FiNeZeep" />
             </feature>
         </config-file>
-        <header-file src="src/ios/FiNeZeep.h" />
+       <!-- <header-file src="src/ios/FiNeZeep.h" />
         <source-file src="src/ios/FiNeZeep.m" />
         <header-file src="src/ios/Common.h" />
         <header-file src="src/ios/aes/aes.h" target-dir="Plugins/aes" />
@@ -76,7 +89,16 @@
         <source-file src="src/ios/minizip/ioapi.c" target-dir="Plugins/minizip" />
         <header-file src="src/ios/minizip/ioapi.h" target-dir="Plugins/minizip" />
         <header-file src="src/ios/minizip/crypt.h" target-dir="Plugins/minizip" />
-        <framework src="libz.dylib" />
+        <framework src="libz.dylib" />-->
+        <source-file src="src/ios/Zeep.swift" />
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git" />
+            </config>
+            <pods use-frameworks="true">
+                <pod name="ZIPFoundation" spec="~> 0.9.12" />
+            </pods>
+        </podspec>
     </platform>
 
 	<!--
