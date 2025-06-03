@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/FortuneN/cordova-plugin-zeep/issues"
   },
-  "homepage": "https://github.com/FortuneN/cordova-plugin-zeep#readme"
+  "homepage": "https://github.com/FortuneN/cordova-plugin-zeep#readme",
+  "dependencies": {
+    "fflate": "^0.8.2"
+  }
 }

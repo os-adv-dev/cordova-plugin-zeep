@@ -46,7 +46,7 @@
     </platform>
 
     <platform name="ios">
-        
+        <preference name="deployment-target" value="12.0" />
         <hook type="after_plugin_add" src="src/ios/hooks/add_swift_support.js" />
         
         <config-file target="config.xml" parent="/*">
