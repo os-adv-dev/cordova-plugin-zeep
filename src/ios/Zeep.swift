@@ -29,6 +29,10 @@ class Zeep: CDVPlugin {
 
         DispatchQueue.global(qos: .userInitiated).async {
             do {
+                if FileManager.default.fileExists(atPath: toURL.path) {
+                    try FileManager.default.removeItem(at: toURL)
+                }
+
                 try FileManager.default.zipItem(
                     at: fromURL,
                     to: toURL,
@@ -64,15 +68,19 @@ class Zeep: CDVPlugin {
 
         DispatchQueue.global(qos: .userInitiated).async {
             do {
+                if FileManager.default.fileExists(atPath: toURL.path) {
+                    try FileManager.default.removeItem(at: toURL)
+                }
+
                 try FileManager.default.createDirectory(at: toURL, withIntermediateDirectories: true)
                 try FileManager.default.unzipItem(at: fromURL, to: toURL)
 
-                let result = CDVPluginResult(status: .ok, messageAs: "✅ unzip completed")
+                let result = CDVPluginResult(status: .ok, messageAs: "✅ Unzip completed successfully.")
                 self.commandDelegate.send(result, callbackId: command.callbackId)
             } catch {
                 let result = CDVPluginResult(
                     status: .error,
-                    messageAs: "❌ unzip error: \(error.localizedDescription)"
+                    messageAs: "❌ Unzip error: \(error.localizedDescription)"
                 )
                 self.commandDelegate.send(result, callbackId: command.callbackId)
             }
