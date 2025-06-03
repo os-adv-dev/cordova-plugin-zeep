@@ -1,6 +1,5 @@
 import Foundation
 import ZIPFoundation
-import Cordova
 
 @objc(Zeep)
 class Zeep: CDVPlugin {

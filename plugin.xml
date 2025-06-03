@@ -51,7 +51,7 @@
         
         <config-file target="config.xml" parent="/*">
             <feature name="Zeep">
-                <param name="ios-package" value="FiNeZeep" />
+                <param name="ios-package" value="Zeep" />
             </feature>
         </config-file>
        <!-- <header-file src="src/ios/FiNeZeep.h" />

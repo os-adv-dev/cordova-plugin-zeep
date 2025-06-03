@@ -87,8 +87,13 @@ class Zeep : CordovaPlugin() {
                     }
 
                     val task = async {
-                        BufferedOutputStream(FileOutputStream(outputFile), bufferSize).use { out ->
-                            out.write(entryData)
+                        withContext(Dispatchers.IO) {
+                            BufferedOutputStream(
+                                FileOutputStream(outputFile),
+                                bufferSize
+                            ).use { out ->
+                                out.write(entryData)
+                            }
                         }
                     }
                     tasks.add(task)
