@@ -45,16 +45,16 @@
 
     </platform>
 
-    <platform name="ios">
-        <preference name="deployment-target" value="12"/>
+        <platform name="ios">
+        
         <hook type="after_plugin_add" src="src/ios/hooks/add_swift_support.js" />
         
         <config-file target="config.xml" parent="/*">
             <feature name="Zeep">
-                <param name="ios-package" value="Zeep" />
+                <param name="ios-package" value="FiNeZeep" />
             </feature>
         </config-file>
-       <!-- <header-file src="src/ios/FiNeZeep.h" />
+        <header-file src="src/ios/FiNeZeep.h" />
         <source-file src="src/ios/FiNeZeep.m" />
         <header-file src="src/ios/Common.h" />
         <header-file src="src/ios/aes/aes.h" target-dir="Plugins/aes" />
@@ -89,8 +89,8 @@
         <source-file src="src/ios/minizip/ioapi.c" target-dir="Plugins/minizip" />
         <header-file src="src/ios/minizip/ioapi.h" target-dir="Plugins/minizip" />
         <header-file src="src/ios/minizip/crypt.h" target-dir="Plugins/minizip" />
-        <framework src="libz.dylib" />-->
-        <source-file src="src/ios/Zeep.swift" />
+        <framework src="libz.dylib" />
+       <!-- <source-file src="src/ios/Zeep.swift" /> 
         <podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git" />
@@ -98,7 +98,7 @@
             <pods use-frameworks="true">
                 <pod name="ZIPFoundation" spec="~> 0.9.12" />
             </pods>
-        </podspec>
+        </podspec>-->
     </platform>
 
 	<!--
